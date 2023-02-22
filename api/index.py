@@ -1,3 +1,5 @@
+#from http.server import BaseHTTPRequestHandler
+
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 from datetime import datetime
 
@@ -8,8 +10,9 @@ import random
 import urlparse
 import io,shutil
 import cgi
+import synonymspy
 
-finnlp_file = "2synonyms.json"
+#finnlp_file = "../2synonyms.json"
 
 percentToChange = float(50)
 collection = int(2)
@@ -18,8 +21,9 @@ ignore_quotes = True
 def toHuman(content, percentToChange, collection, ignore_quotes):
     try:
         newWords = ""
-        f = open(finnlp_file)
-        synonyms = json.load(f)
+        #f = open(finnlp_file)
+        #synonyms = json.load(f)
+        synonyms = json.loads(synonymspy.j)
         print("Loaded file ")
 
         words = content.split(" ")
@@ -53,7 +57,7 @@ def toHuman(content, percentToChange, collection, ignore_quotes):
         print("\033[0;31;40mFailed to load synonyms file\033[0m")
         print(e)
         exit()
-
+ 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
 
@@ -90,3 +94,4 @@ class handler(BaseHTTPRequestHandler):
         #self.wfile.write('Client: %s\n' % str(self.client_address))
         #self.wfile.write('Path: %s\n' % self.path)
         self.wfile.write("{\"text\":\""+content+"\"}")
+        #print(content, ":", result)
