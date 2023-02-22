@@ -1,6 +1,6 @@
-#from http.server import BaseHTTPRequestHandler
+from http.server import BaseHTTPRequestHandler
 
-from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+#from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 from datetime import datetime
 
 import os
