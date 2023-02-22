@@ -81,20 +81,23 @@ class handler(BaseHTTPRequestHandler):
         })
 
         content = ""
+        percentage = 35
         result = ""
         for field in form.keys():
             if field == "text":
                 content = form[field].value
-                result = toHuman(content, 60, 2, False)
+            elif field == "percentage":
+                percentage = int(form[field].value)
                 break
 
+        result = toHuman(content, percentage, 2, False)
         enc = "UTF-8"
         self.send_response(200)  
         self.send_header("Content-type", "application/json; charset=%s" % enc)  
         self.end_headers()  
         #self.wfile.write('Client: %s\n' % str(self.client_address))
         #self.wfile.write('Path: %s\n' % self.path)
-        self.wfile.write(("{\"text\":\""+content+"\"}").encode())
+        self.wfile.write(("{\"text\":\""+content.replace('"', r'\"')+"\"}").encode())
         #print(content, ":", result)
 
 #if __name__ == '__main__':
