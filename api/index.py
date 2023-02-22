@@ -7,7 +7,6 @@ import os
 import urllib
 import json
 import random
-import urlparse
 import io,shutil
 import cgi
 #import synonymspy
@@ -67,11 +66,6 @@ def toHuman(content, percentToChange, collection, ignore_quotes):
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
-
-        parsed_path = urlparse.urlparse(self.path)
-        print(self.path)
-        #data=parsed_path.query[0]
-
         self.send_response(200)
         self.send_header('Content-type', 'text/plain')
         self.end_headers()
