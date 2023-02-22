@@ -9,7 +9,7 @@ import urlparse
 import io,shutil
 import cgi
 
-finnlp_file = "../2synonyms.json"
+finnlp_file = "2synonyms.json"
 
 percentToChange = float(50)
 collection = int(2)
