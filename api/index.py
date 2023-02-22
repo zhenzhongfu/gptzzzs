@@ -88,7 +88,6 @@ class handler(BaseHTTPRequestHandler):
                 content = form[field].value
             elif field == "percentage":
                 percentage = int(form[field].value)
-                break
 
         result = toHuman(content, percentage, 2, False)
         enc = "UTF-8"
