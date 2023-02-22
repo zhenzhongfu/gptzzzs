@@ -94,7 +94,7 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()  
         #self.wfile.write('Client: %s\n' % str(self.client_address))
         #self.wfile.write('Path: %s\n' % self.path)
-        self.wfile.write(encode("{\"text\":\""+content+"\"}"))
+        self.wfile.write("{\"text\":\""+content+"\"}".encode())
         #print(content, ":", result)
 
 #if __name__ == '__main__':
